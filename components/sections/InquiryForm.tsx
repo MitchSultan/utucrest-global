@@ -5,6 +5,7 @@ import type { InquiryVariant } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { FormStatus } from "@/components/ui/FormStatus";
 import { cn } from "@/lib/utils";
+import { siteConfig } from "@/content/site";
 
 interface FormField {
   name: string;
@@ -145,26 +146,26 @@ const submitLabels: Record<InquiryVariant, string> = {
   general: "Send message",
 };
 
-const successMessages: Record<InquiryVariant, { title: string; message: string }> = {
+const submissionMessages: Record<InquiryVariant, { title: string; message: string }> = {
   employer: {
-    title: "Inquiry received",
+    title: "Ready to continue",
     message:
-      "Our workforce team will review your brief and respond within two business days. In production, this connects to your CRM.",
+      "Review and send the prepared message in your email app. If no draft opened, contact us at",
   },
   candidate: {
-    title: "Registration interest received",
+    title: "Ready to continue",
     message:
-      "We will be in touch with next steps. Applying does not guarantee placement—we match thoughtfully.",
+      "Review and send the prepared message in your email app. If no draft opened, contact us at",
   },
   partner: {
-    title: "Partnership inquiry received",
+    title: "Ready to continue",
     message:
-      "Thank you for your interest. Our team will follow up to explore alignment.",
+      "Review and send the prepared message in your email app. If no draft opened, contact us at",
   },
   general: {
-    title: "Message sent",
+    title: "Ready to continue",
     message:
-      "We have received your message and will respond shortly.",
+      "Review and send the prepared message in your email app. If no draft opened, contact us at",
   },
 };
 
@@ -175,7 +176,6 @@ export interface InquiryFormProps {
 
 export function InquiryForm({ variant, className }: InquiryFormProps) {
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const fields = fieldsByVariant[variant];
@@ -201,7 +201,7 @@ export function InquiryForm({ variant, className }: InquiryFormProps) {
     return newErrors;
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -213,23 +213,21 @@ export function InquiryForm({ variant, className }: InquiryFormProps) {
     }
 
     setErrors({});
-    setSubmitting(true);
-
-    // Prototype: simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 800));
-
-    setSubmitting(false);
+    const body = fields
+      .map((field) => `${field.label}: ${formData.get(field.name)?.toString().trim() ?? ""}`)
+      .join("\n");
+    const subject = `${siteConfig.shortName} ${variant} inquiry`;
+    window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
-    form.reset();
   };
 
   if (submitted) {
-    const success = successMessages[variant];
+    const submission = submissionMessages[variant];
     return (
       <FormStatus
-        variant="success"
-        title={success.title}
-        message={success.message}
+        variant="info"
+        title={submission.title}
+        message={`${submission.message} ${siteConfig.contact.email}.`}
         className={className}
       />
     );
@@ -340,13 +338,12 @@ export function InquiryForm({ variant, className }: InquiryFormProps) {
         </p>
       )}
 
-      <Button type="submit" disabled={submitting} className="w-full sm:w-auto">
-        {submitting ? "Submitting…" : submitLabels[variant]}
+      <Button type="submit" className="w-full sm:w-auto">
+        {submitLabels[variant]}
       </Button>
 
       <p className="text-xs text-charcoal/60">
-        Prototype form — connect to CRM/API at{" "}
-        <code className="rounded bg-mist px-1">/api/inquiries</code>
+        Submitting opens a draft in your email app for you to review and send.
       </p>
     </form>
   );

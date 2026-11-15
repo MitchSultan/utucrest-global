@@ -56,7 +56,7 @@ export default function EmployersPage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-md">
             <Image
               src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
-              alt="HR leader reviewing workforce plans — prototype placeholder"
+              alt="Colleagues reviewing a workforce plan together"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"
@@ -87,7 +87,7 @@ export default function EmployersPage() {
           <SectionHeading
             eyebrow="Industries"
             title="Sectors we support"
-            description="[Replace with confirmed industry list and sector-specific proof when approved.]"
+            description="Our workforce solutions serve organizations across a range of sectors."
             className="mb-8"
           />
           <div className="flex flex-wrap gap-3">
@@ -111,10 +111,6 @@ export default function EmployersPage() {
               title="Tell us about your hiring needs"
               description="Share your brief and our workforce team will respond within two business days with a recommended approach."
             />
-            <p className="mt-6 text-sm text-charcoal/70">
-              [Insert approved client logos and verified placement metrics here
-              when available.]
-            </p>
           </div>
           <InquiryForm variant="employer" />
         </div>

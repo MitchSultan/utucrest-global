@@ -1,4 +1,4 @@
-import type { ImpactMetric, TrustItem, ProcessStep, Value, TeamMember } from "@/lib/types";
+import type { TrustItem, ProcessStep, Value } from "@/lib/types";
 
 export const trustItems: TrustItem[] = [
   {
@@ -73,29 +73,6 @@ export const dignityPractices = [
   "Ongoing support after start date",
 ];
 
-export const impactMetrics: ImpactMetric[] = [
-  {
-    label: "Candidates supported through preparation",
-    value: "[Replace with verified metric]",
-    isPlaceholder: true,
-  },
-  {
-    label: "Employer partnerships active",
-    value: "[Replace with verified metric]",
-    isPlaceholder: true,
-  },
-  {
-    label: "Roles filled with follow-up support",
-    value: "[Replace with verified metric]",
-    isPlaceholder: true,
-  },
-  {
-    label: "Geographic reach",
-    value: "Kenya & select global markets",
-    isPlaceholder: false,
-  },
-];
-
 export const impactPillars = [
   {
     title: "Ethical employment",
@@ -147,24 +124,6 @@ export const companyValues: Value[] = [
   },
 ];
 
-export const teamMembers: TeamMember[] = [
-  {
-    name: "[Team member name]",
-    role: "Founder & Managing Director",
-    bio: "[Replace with approved biography and professional background]",
-  },
-  {
-    name: "[Team member name]",
-    role: "Workforce Solutions Lead",
-    bio: "[Replace with approved biography]",
-  },
-  {
-    name: "[Team member name]",
-    role: "Candidate Preparation Coordinator",
-    bio: "[Replace with approved biography]",
-  },
-];
-
 export const industriesServed = [
   "Technology",
   "Healthcare",
@@ -172,5 +131,4 @@ export const industriesServed = [
   "Manufacturing",
   "Retail & FMCG",
   "Professional Services",
-  "[Add confirmed industries]",
 ];

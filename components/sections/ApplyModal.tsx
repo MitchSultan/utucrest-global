@@ -4,13 +4,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { FormStatus } from "@/components/ui/FormStatus";
 import type { Job } from "@/lib/types";
+import { siteConfig } from "@/content/site";
 
 export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) {
-  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const newErrors: Record<string, string> = {};
@@ -30,9 +30,15 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
       return;
     }
 
-    setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 700));
-    setSubmitting(false);
+    const body = [
+      `Position: ${job.title}`,
+      `Name: ${formData.get("name")?.toString().trim() ?? ""}`,
+      `Email: ${formData.get("email")?.toString().trim() ?? ""}`,
+      `Phone: ${formData.get("phone")?.toString().trim() ?? ""}`,
+      `Why interested: ${formData.get("message")?.toString().trim() ?? ""}`,
+    ].join("\n");
+    const subject = `Application interest: ${job.title}`;
+    window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -54,16 +60,16 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
           Apply for {job.title}
         </h2>
         <p className="mt-2 text-sm text-charcoal/70">
-          Complete this form to express interest. Utu Crest will guide you through
-          the next steps with transparent communication.
+          Prepare an expression of interest. Review the draft in your email app and
+          send it to complete your application.
         </p>
 
         {submitted ? (
           <div className="mt-6">
             <FormStatus
-              variant="success"
-              title="Application received"
-              message="We will review your profile and contact you if there is a strong match. This does not guarantee employment."
+              variant="info"
+              title="Ready to continue"
+              message={`Review and send the prepared email. If no draft opened, contact ${siteConfig.contact.email}.`}
             />
             <Button className="mt-4" onClick={onClose}>
               Close
@@ -116,8 +122,8 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
             )}
 
             <div className="flex gap-3">
-              <Button type="submit" disabled={submitting}>
-                {submitting ? "Submitting…" : "Submit application"}
+              <Button type="submit">
+                Continue by email
               </Button>
               <Button type="button" variant="ghost" onClick={onClose}>
                 Cancel

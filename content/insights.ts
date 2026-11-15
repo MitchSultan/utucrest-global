@@ -18,7 +18,7 @@ Global opportunities can open meaningful career pathways when approached with pr
 
 **Protect your dignity throughout.** You should never pay undisclosed fees, surrender original documents without receipt, or accept vague promises. Ethical placement means transparent communication at every step.
 
-Utu Crest supports candidates with interview coaching, document checklists, and ongoing guidance. [Replace with verified program details when approved.]
+Utu Crest supports candidates with interview coaching, document checklists, and ongoing guidance.
     `.trim(),
     publishedDate: "2026-07-12",
     readingTime: 6,
@@ -41,7 +41,7 @@ Growing businesses often feel hiring pressure before they have clarity on what t
 
 **Measure what matters.** Track time-to-productivity, retention, and quality of work—not just time-to-fill.
 
-Utu Crest helps employers design workforce strategies that balance speed with sustainability. [Replace with verified case references when approved.]
+Utu Crest helps employers design workforce strategies that balance speed with sustainability.
     `.trim(),
     publishedDate: "2026-06-28",
     readingTime: 5,
@@ -66,7 +66,7 @@ Ethical recruitment is not a tagline. It is a set of daily decisions about how c
 
 **Accountability.** Organizations should be able to explain their process, document their standards, and respond when something goes wrong.
 
-Utu Crest builds its operations around these principles. [Insert approved ethical recruitment policy link when available.]
+Utu Crest builds its operations around these principles.
     `.trim(),
     publishedDate: "2026-06-15",
     readingTime: 4,

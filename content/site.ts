@@ -4,16 +4,16 @@ export const siteConfig = {
   tagline: "Dignity in work. Opportunity with direction.",
   description:
     "Utu Crest connects prepared talent with employers who are ready to grow—across Kenya and into global markets.",
-  url: "https://utucrest.com",
+  url: "https://utucrestglobal.co.ke",
   contact: {
     address: "Eastern Bypass, Kamakis",
     phone: "+254 713 448 062",
-    email: "info@utucrest.com",
+    email: "info@utucrestglobal.co.ke",
   },
   social: {
-    linkedin: "[Insert approved LinkedIn URL]",
-    twitter: "[Insert approved X/Twitter URL]",
-    facebook: "[Insert approved Facebook URL]",
+    linkedin: "",
+    twitter: "",
+    facebook: "",
   },
   announcement:
     "Connecting talent to opportunity across Kenya and global markets.",

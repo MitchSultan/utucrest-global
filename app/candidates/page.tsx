@@ -37,7 +37,7 @@ export default function CandidatesPage() {
           <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-md">
             <Image
               src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
-              alt="Professional preparing for an interview — prototype placeholder"
+              alt="Professional preparing for an interview"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

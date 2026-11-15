@@ -97,12 +97,16 @@ export function SiteFooter() {
             </address>
           </div>
           <div>
-            <h3 className="text-sm font-semibold text-white">Connect</h3>
-            <ul className="mt-3 space-y-1.5 text-sm text-mist/60">
-              <li>{siteConfig.social.linkedin}</li>
-              <li>{siteConfig.social.twitter}</li>
-              <li>{siteConfig.social.facebook}</li>
-            </ul>
+            <h3 className="text-sm font-semibold text-white">Start a conversation</h3>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-mist/70">
+              Have a hiring need or a question about your next move? Our team is ready to help.
+            </p>
+            <a
+              href={`mailto:${siteConfig.contact.email}`}
+              className="mt-3 inline-flex text-sm font-medium text-golden-sand hover:text-white"
+            >
+              Email our team
+            </a>
           </div>
         </div>
 

@@ -1,7 +1,5 @@
 export type EmploymentType = "Full-time" | "Part-time" | "Contract" | "Internship";
 
-export type StoryType = "candidate" | "employer" | "impact";
-
 export type InquiryVariant = "employer" | "candidate" | "partner" | "general";
 
 export interface NavItem {
@@ -46,21 +44,6 @@ export interface Insight {
   author: string;
 }
 
-export interface Story {
-  id: string;
-  type: StoryType;
-  label: string;
-  title: string;
-  challenge: string;
-  intervention: string;
-  outcome: string;
-  quote?: string;
-  personName: string;
-  personRole: string;
-  image: string;
-  imageAlt: string;
-}
-
 export interface TrustItem {
   title: string;
   description: string;
@@ -70,18 +53,6 @@ export interface TrustItem {
 export interface ProcessStep {
   title: string;
   description: string;
-}
-
-export interface ImpactMetric {
-  label: string;
-  value: string;
-  isPlaceholder?: boolean;
-}
-
-export interface TeamMember {
-  name: string;
-  role: string;
-  bio: string;
 }
 
 export interface Value {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { LinkButton } from "@/components/ui/LinkButton";
 import { brandPrinciples } from "@/content/site";
 
@@ -26,60 +27,79 @@ export function HeroSection({
   trustStatement = brandPrinciples.trustStatement,
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-warm-ivory pathway-curve">
-      <div className="container-site grid items-center gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-16 lg:py-24">
-        <div className="max-w-xl">
-          <p className="text-sm font-semibold uppercase tracking-wider text-deep-teal">
+    <section className="relative isolate overflow-hidden bg-warm-ivory">
+      <div
+        className="pointer-events-none absolute -right-32 -top-40 -z-10 size-[34rem] rounded-full border border-deep-teal/10"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute -right-16 -top-24 -z-10 size-[26rem] rounded-full border border-deep-teal/10"
+        aria-hidden="true"
+      />
+      <div className="container-site grid items-center gap-12 py-16 md:py-20 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
+        <div className="max-w-2xl">
+          <p className="eyebrow text-deep-teal">
             {eyebrow}
           </p>
-          <h1 className="font-display mt-4 text-balance text-4xl font-semibold leading-tight tracking-tight text-ink md:text-5xl lg:text-[3.25rem]">
+          <h1 className="font-display mt-6 text-balance text-[2.75rem] font-semibold leading-[1.05] tracking-tight text-ink md:text-6xl lg:text-[4.25rem]">
             {title}
             {titleLine2 && (
               <>
-                <br />
+                {" "}
                 <span className="text-deep-teal">{titleLine2}</span>
               </>
             )}
           </h1>
-          <p className="mt-6 text-lg leading-relaxed text-charcoal/85">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal/80 md:text-xl">
             {description}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <LinkButton href={primaryCta.href} size="lg">
+            <LinkButton href={primaryCta.href} size="lg" className="group">
               {primaryCta.label}
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </LinkButton>
-            <LinkButton href={secondaryCta.href} variant="secondary" size="lg">
+            <LinkButton
+              href={secondaryCta.href}
+              variant="secondary"
+              size="lg"
+              className="border-ink/15 bg-white/70"
+            >
               {secondaryCta.label}
             </LinkButton>
           </div>
-          <p className="mt-8 text-sm font-medium text-charcoal/70">
-            {trustStatement}
-          </p>
+          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/10 pt-5 text-sm text-charcoal/70">
+            <span className="font-medium text-ink">Built around people</span>
+            <span className="hidden h-4 w-px bg-ink/15 sm:block" aria-hidden="true" />
+            <span>{trustStatement}</span>
+          </div>
         </div>
 
-        <div className="relative">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-xl shadow-lg md:aspect-[5/4]">
+        <div className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
+          <div className="absolute -inset-4 -z-10 rotate-3 rounded-[2rem] bg-mist" aria-hidden="true" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-mist shadow-lg md:aspect-[5/4]">
             <Image
-              src="/images/12.jpg"
+              src={imageSrc}
               alt={imageAlt}
               fill
               priority
-              className="object-cover "
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
-          <div className="absolute -bottom-4 -left-4 hidden rounded-lg bg-white p-4 shadow-md md:block">
-            <p className="text-xs font-semibold uppercase tracking-wider text-deep-teal">
-              Serving
+          <div className="absolute -bottom-5 -left-3 max-w-[17rem] rounded-xl border border-border/70 bg-white p-4 shadow-md md:-left-7 md:p-5">
+            <p className="eyebrow text-deep-teal">
+              People first
             </p>
-            <p className="mt-1 text-sm font-medium text-ink">
-              Candidates & employers
+            <p className="mt-2 text-sm leading-relaxed text-charcoal">
+              Thoughtful recruitment for candidates and employers.
             </p>
           </div>
           <div
-            className="absolute -right-3 -top-3 size-24 rounded-full border-2 border-golden-sand/40"
+            className="absolute -right-4 -top-4 flex size-16 items-center justify-center rounded-full bg-golden-sand text-ink shadow-md"
             aria-hidden="true"
-          />
+          >
+            <ArrowDown className="size-5 -rotate-45" />
+          </div>
         </div>
       </div>
     </section>

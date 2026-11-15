@@ -30,10 +30,6 @@ export const mainNavigation: NavItem[] = [
   },
   { label: "For Employers", href: "/employers" },
   { label: "For Candidates", href: "/candidates" },
-  { label: "Training", href: "/training" },
-  { label: "Impact", href: "/impact" },
-  { label: "Insights", href: "/insights" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const footerNavigation = {
