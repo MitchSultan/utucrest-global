@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export interface SectionHeadingProps {
   eyebrow?: string;
@@ -35,23 +37,25 @@ export function SectionHeading({
           {eyebrow}
         </p>
       )}
-      <h2
+      <TextReveal
+        as="h2"
+        text={title}
+        trigger="scroll"
         className={cn(
           "font-display text-balance text-3xl font-semibold tracking-tight md:text-4xl",
           dark ? "text-white" : "text-ink",
         )}
-      >
-        {title}
-      </h2>
+      />
       {description && (
-        <p
+        <ScrollReveal
+          as="p"
           className={cn(
             "mt-4 text-lg leading-relaxed",
             dark ? "text-mist" : "text-charcoal/80",
           )}
         >
           {description}
-        </p>
+        </ScrollReveal>
       )}
     </div>
   );

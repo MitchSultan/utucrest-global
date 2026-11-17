@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export function DignityFeature() {
   return (
@@ -19,17 +21,18 @@ export function DignityFeature() {
           <p className="text-sm font-semibold uppercase tracking-wider text-deep-teal">
             Dignity in work
           </p>
-          <h2
+          <TextReveal
+            as="h2"
             id="dignity-heading"
+            text="Work is more than a placement. It is a step in someone's future."
+            trigger="scroll"
             className="font-display mt-3 text-balance text-3xl font-semibold text-ink md:text-4xl"
-          >
-            Work is more than a placement. It is a step in someone&apos;s future.
-          </h2>
-          <p className="mt-4 leading-relaxed text-charcoal/85">
+          />
+          <ScrollReveal as="p" className="mt-4 leading-relaxed text-charcoal/85">
             At Utu Crest, dignity shows up in how we communicate, prepare, and
             place people—not in slogans. We believe work should open doors, not
             reduce people to numbers.
-          </p>
+          </ScrollReveal>
           <ul className="mt-6 space-y-3">
             {[
               "Transparent communication at every stage",

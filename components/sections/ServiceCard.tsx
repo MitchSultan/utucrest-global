@@ -8,6 +8,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import type { Service } from "@/lib/types";
+import { ResponsiveCarousel } from "@/components/ui/ResponsiveCarousel";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -68,11 +70,19 @@ export function ServicesGrid({ services, heading }: ServicesGridProps) {
             className="mb-12"
           />
         )}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <ServiceCard key={service.id} service={service} />
-          ))}
-        </div>
+        <ScrollReveal
+          as="div"
+          stagger
+        >
+          <ResponsiveCarousel
+            label="Workforce services"
+            className="md:grid-cols-2 lg:grid-cols-4"
+          >
+            {services.map((service) => (
+              <ServiceCard key={service.id} service={service} />
+            ))}
+          </ResponsiveCarousel>
+        </ScrollReveal>
       </div>
     </section>
   );

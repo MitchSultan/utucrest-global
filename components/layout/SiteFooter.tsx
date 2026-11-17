@@ -112,7 +112,15 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-mist/60">
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved <span className="hidden sm:inline"> | </span>
+            <span className="sm:hidden"><br /></span>
+            <Link
+              href='https://madebymitch.com'
+              target="_blank"
+              className="text-xs text-mist/60 hover:text-white"
+            >
+              Made by Mitch
+            </Link>
           </p>
           <div className="flex gap-4">
             {footerNavigation.legal.map((item) => (
@@ -127,10 +135,10 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <p className="mt-6 text-xs leading-relaxed text-mist/50">
+        {/* <p className="mt-6 text-xs leading-relaxed text-mist/50">
           We believe work should open doors—not reduce people to numbers. Every
           placement follows standards of dignity, transparency, and respect.
-        </p>
+        </p> */}
       </div>
     </footer>
   );

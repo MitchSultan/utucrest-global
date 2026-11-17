@@ -7,7 +7,6 @@ import { mainNavigation } from "@/content/navigation";
 import { siteConfig } from "@/content/site";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
-import { LinkButton } from "@/components/ui/LinkButton";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -78,17 +77,6 @@ export function SiteHeader() {
             >
               <Phone className="size-4" />
             </a>
-            <LinkButton href="/jobs" size="sm" className="hidden sm:inline-flex">
-              Find jobs
-            </LinkButton>
-            <LinkButton
-              href="/employers"
-              variant="secondary"
-              size="sm"
-              className="hidden md:inline-flex"
-            >
-              Hire talent
-            </LinkButton>
             <button
               type="button"
               className={cn(

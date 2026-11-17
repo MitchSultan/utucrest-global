@@ -1,15 +1,16 @@
-import Image from "next/image";
 import { PageHero } from "@/components/sections/FinalCTA";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LinkButton } from "@/components/ui/LinkButton";
-import { candidateProcess, dignityPractices } from "@/content/impact";
+import { CandidateRegistrationForm } from "@/components/sections/CandidateRegistrationForm";
+import { candidateProcess, dignityPractices, utuCrestExperience } from "@/content/impact";
+import { workerProtectionChecks, fairRecruitmentStandard } from "@/content/site";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
-  title: "For Candidates",
+  title: "For Candidates · Join the Talent Pool",
   description:
-    "Your next opportunity deserves preparation. Explore dignified pathways to meaningful work with guidance, support, and respect.",
+    "Elevate your career with dignity. Register your CV with UtuCrest Global Workforce for verified local and international job opportunities. Zero placement fees.",
   path: "/candidates",
 });
 
@@ -17,85 +18,135 @@ export default function CandidatesPage() {
   return (
     <>
       <PageHero
-        eyebrow="For candidates"
-        title="Your next opportunity deserves preparation."
-        description="Utu Crest supports job seekers with respectful guidance, practical preparation, and access to opportunities across Kenya and global markets. We see your potential—not just your CV."
+        eyebrow="For Candidates · Ethical Pathways"
+        title="Elevating talent with dignity."
+        description="At UtuCrest Global Workforce, we believe that every individual deserves the opportunity to rise. Connect with verified employers across Kenya, Europe, the Middle East, and Asia with complete transparency and zero recruitment fees."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
-          <LinkButton href="/jobs">Browse jobs</LinkButton>
-          <LinkButton href="/contact" variant="secondary">
-            Join the talent network
+          <LinkButton href="#talent-pool">Submit your CV</LinkButton>
+          <LinkButton href="/jobs" variant="secondary">
+            Browse active jobs
           </LinkButton>
           <LinkButton href="/training" variant="ghost">
-            Explore training
+            Worker readiness training
           </LinkButton>
         </div>
       </PageHero>
 
-      <section className="py-16 md:py-20">
-        <div className="container-site grid items-center gap-10 lg:grid-cols-2">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-md">
-            <Image
-              src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800&q=80"
-              alt="Professional preparing for an interview"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+      {/* The UtuCrest Experience: Assurance, Hope, Trust, Freedom */}
+      <section className="border-b border-border bg-white py-12 md:py-16">
+        <div className="container-site">
+          <div className="text-center max-w-2xl mx-auto mb-10">
+            <p className="eyebrow text-deep-teal">What Workers Feel</p>
+            <h2 className="font-display mt-2 text-2xl font-semibold text-ink sm:text-3xl">
+              The UtuCrest Experience
+            </h2>
           </div>
-          <div>
-            <SectionHeading
-              eyebrow="How we support you"
-              title="Guidance at every step—not pressure to accept anything"
-              description="We help you understand roles clearly, prepare with confidence, and make informed decisions about your next move."
-            />
-            <ul className="mt-8 space-y-3">
-              {[
-                "Clear information about roles, locations, and expectations",
-                "Interview preparation and CV refinement",
-                "Honest feedback—not false promises",
-                "Follow-up support after you start a new role",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm text-charcoal/85"
-                >
-                  <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-terracotta" />
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {utuCrestExperience.map((item) => (
+              <div
+                key={item.title}
+                className="relative rounded-2xl border border-border bg-warm-ivory/60 p-6 shadow-xs"
+              >
+                <span className="text-xs font-bold text-terracotta tracking-widest uppercase">
+                  {item.number}
+                </span>
+                <h3 className="font-display mt-2 text-xl font-semibold text-ink">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal/80">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* Active Talent Pool Registration Form Section */}
+      <section id="talent-pool" className="bg-mist/50 py-16 md:py-24 scroll-mt-20">
+        <div className="container-site max-w-4xl">
+          <CandidateRegistrationForm />
+        </div>
+      </section>
+
+      {/* 5 Worker Protection Checks */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="container-site">
+          <SectionHeading
+            eyebrow="Worker Protection"
+            title="Every placement follows five mandatory checks"
+            description="We ensure you are protected before, during, and after your placement with verified contracts, lawful visas, and ongoing welfare tracking."
+            className="mb-12"
+          />
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {workerProtectionChecks.map((check) => (
+              <div
+                key={check.step}
+                className="rounded-xl border border-border bg-warm-ivory/30 p-6 transition hover:border-deep-teal/40"
+              >
+                <div className="flex size-9 items-center justify-center rounded-full bg-deep-teal text-white text-xs font-bold">
+                  {check.step}
+                </div>
+                <h3 className="font-display mt-4 text-lg font-semibold text-ink">
+                  {check.title}
+                </h3>
+                <p className="mt-2 text-sm text-charcoal/80 leading-relaxed">
+                  {check.description}
+                </p>
+              </div>
+            ))}
+
+            {/* Fair Recruitment Card */}
+            <div className="rounded-xl border-2 border-terracotta/40 bg-white p-6 shadow-xs sm:col-span-2 lg:col-span-1">
+              <span className="rounded-full bg-terracotta/10 px-2.5 py-0.5 text-xs font-bold text-terracotta uppercase tracking-wide">
+                Fair Recruitment Rule
+              </span>
+              <h3 className="font-display mt-3 text-lg font-bold text-ink">
+                {fairRecruitmentStandard.headline}
+              </h3>
+              <p className="mt-2 text-xs text-charcoal/80 leading-relaxed">
+                Employers pay all recruitment costs, visas, flights, and medical checkups. Saying no to optional extras never affects your candidacy.
+              </p>
+              <div className="mt-4 pt-3 border-t border-border text-xs font-medium text-deep-teal">
+                ✓ Helpline: +254 713 448 062
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Candidate Pathway Process */}
       <ProcessSteps
         candidateSteps={candidateProcess}
         employerSteps={candidateProcess}
       />
 
+      {/* Safeguards & Accountability */}
       <section className="bg-mist py-16 md:py-20">
         <div className="container-site">
           <SectionHeading
-            eyebrow="Your dignity, protected"
-            title="What you can expect from Utu Crest"
-            description="Registration and application do not guarantee employment. We match thoughtfully based on fit, readiness, and opportunity quality."
+            eyebrow="Safeguards & Dignity"
+            title="Our commitments to every worker"
+            description="UtuCrest differentiates itself from traditional recruitment agencies by placing dignity and worker readiness at the center of every decision."
             className="mb-10"
           />
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {dignityPractices.map((practice) => (
               <div
                 key={practice}
-                className="rounded-xl border border-border bg-white p-5 text-sm text-charcoal/85"
+                className="flex items-start gap-3 rounded-xl border border-border bg-white p-5 text-sm text-charcoal/85 shadow-xs"
               >
-                {practice}
+                <span className="mt-1 size-2 shrink-0 rounded-full bg-deep-teal" />
+                <span>{practice}</span>
               </div>
             ))}
           </div>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <LinkButton href="/jobs">Browse current opportunities</LinkButton>
-            <LinkButton href="/contact" variant="secondary">
-              Register your interest
+            <LinkButton href="#talent-pool">Submit your CV now</LinkButton>
+            <LinkButton href="/jobs" variant="secondary">
+              Browse current vacancies
             </LinkButton>
           </div>
         </div>

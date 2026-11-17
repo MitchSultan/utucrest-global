@@ -3,6 +3,8 @@
 import { useState } from "react";
 import type { ProcessStep } from "@/lib/types";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { ResponsiveCarousel } from "@/components/ui/ResponsiveCarousel";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 export interface ProcessStepsProps {
@@ -60,32 +62,40 @@ export function ProcessSteps({
           ))}
         </div>
 
-        <ol
+        <ScrollReveal
+          as="div"
           id="process-panel"
           role="tabpanel"
-          aria-labelledby={`tab-${track}`}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          ariaLabelledBy={`tab-${track}`}
+          stagger
         >
-          {steps.map((step, index) => (
-            <li
-              key={step.title}
-              className="relative rounded-xl bg-white p-6 shadow-sm"
-            >
-              <span
-                className="inline-flex size-8 items-center justify-center rounded-full bg-deep-teal/10 text-sm font-bold text-deep-teal"
-                aria-hidden="true"
+          <ResponsiveCarousel
+            label="Process steps"
+            className="md:grid-cols-2 lg:grid-cols-4"
+            contentRole="list"
+            itemRole="listitem"
+          >
+            {steps.map((step, index) => (
+              <div
+                key={step.title}
+                className="relative h-full rounded-xl bg-white p-6 shadow-sm"
               >
-                {index + 1}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold text-ink">
-                {step.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-charcoal/80">
-                {step.description}
-              </p>
-            </li>
-          ))}
-        </ol>
+                <span
+                  className="inline-flex size-8 items-center justify-center rounded-full bg-deep-teal/10 text-sm font-bold text-deep-teal"
+                  aria-hidden="true"
+                >
+                  {index + 1}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-ink">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-charcoal/80">
+                  {step.description}
+                </p>
+              </div>
+            ))}
+          </ResponsiveCarousel>
+        </ScrollReveal>
       </div>
     </section>
   );

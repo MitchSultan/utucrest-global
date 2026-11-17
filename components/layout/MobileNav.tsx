@@ -113,7 +113,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           </ul>
         </nav>
 
-        <div className="space-y-3 border-t border-border p-5">
+        {/* <div className="space-y-3 border-t border-border p-5">
           <LinkButton href="/jobs" className="w-full" onClick={onClose}>
             Find jobs
           </LinkButton>
@@ -125,7 +125,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           >
             Hire talent
           </LinkButton>
-        </div>
+        </div> */}
       </div>
     </div>
   );

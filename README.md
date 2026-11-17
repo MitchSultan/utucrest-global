@@ -38,6 +38,19 @@ The site is normally available. To show the maintenance page, set the server-sid
 
 The proxy serves the maintenance page with HTTP `503` and leaves Next.js assets and public files accessible. Changing a Vercel environment variable affects new deployments, so a redeploy is required.
 
+### Client preview bypass
+
+To let a client view the normal site while maintenance mode is on, configure a strong `MAINTENANCE_BYPASS_SECRET` (at least 32 characters) in Vercel and in your local shell. Keep it private and do not use a `NEXT_PUBLIC_` variable. Generate a secret with `node -e "console.log(require('node:crypto').randomBytes(32).toString('base64url'))"` and add the same value to the relevant Vercel environment.
+
+Generate a signed preview link that expires after seven days:
+
+```powershell
+$env:MAINTENANCE_BYPASS_SECRET = "your-configured-secret"
+npm run maintenance:link -- https://your-site.example
+```
+
+Share the printed URL with the client. Opening it sets a secure, HTTP-only preview cookie and removes the token from the address bar; the client can then navigate the site normally. The link is a bearer credential—share it only with the intended client. Changing the secret revokes outstanding links.
+
 Run the production checks with:
 
 ```bash

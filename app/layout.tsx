@@ -1,33 +1,32 @@
 import type { Metadata } from "next";
-import { DM_Sans, Source_Serif_4 } from "next/font/google";
 import { SiteLayout } from "@/components/layout/SiteLayout";
 import { createMetadata } from "@/lib/metadata";
 import "./globals.css";
+import { Geist, Montserrat } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+const montserrat = Montserrat({
   subsets: ["latin"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  display: "swap",
+  variable: "--font-montserrat",
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   ...createMetadata({}),
+  verification: {
+    google: "eZ2AP1Gjx8cFX0x5jRxPHWU5Dk5NFWEfy3VTyYlEZqw",
+  },
   icons: {
     icon: "/favicon.ico",
   },
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${sourceSerif.variable} h-full`}
+      className={cn("h-full", "font-sans", geist.variable, montserrat.variable)}
     >
       <body className="flex min-h-full flex-col antialiased">
         <SiteLayout>{children}</SiteLayout>

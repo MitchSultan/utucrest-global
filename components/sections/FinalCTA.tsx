@@ -1,5 +1,7 @@
 import { LinkButton } from "@/components/ui/LinkButton";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { TextReveal } from "@/components/ui/TextReveal";
 
 export function FinalCTA() {
   return (
@@ -45,13 +47,21 @@ export function PageHero({
             {eyebrow}
           </p>
         )}
-        <h1 className="font-display mt-3 text-balance text-4xl font-semibold tracking-tight text-ink md:text-5xl">
-          {title}
-        </h1>
+        <TextReveal
+          as="h1"
+          text={title}
+          trigger="load"
+          className="font-display mt-3 text-balance text-4xl font-semibold tracking-tight text-ink md:text-5xl"
+        />
         {description && (
-          <p className="mt-4 text-lg leading-relaxed text-charcoal/85">
+          <ScrollReveal
+            as="p"
+            trigger="load"
+            delay={0.2}
+            className="mt-4 text-lg max-w-96leading-relaxed text-charcoal/85"
+          >
             {description}
-          </p>
+          </ScrollReveal>
         )}
         {children && <div className="mt-8">{children}</div>}
       </div>

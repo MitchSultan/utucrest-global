@@ -3,43 +3,43 @@ import type { Service } from "@/lib/types";
 export const services: Service[] = [
   {
     id: "recruitment",
-    title: "Recruitment",
+    title: "Workforce Recruitment",
     slug: "recruitment",
     href: "/services/recruitment",
-    outcome: "Find the right people for the work that matters.",
+    outcome: "Ethically sourced, prepared talent for local and overseas employers.",
     description:
-      "We combine thoughtful sourcing, practical screening, and role-fit matching.",
+      "Strategic talent sourcing, screening, and placement across Kenya, Europe, the Middle East, and Asia with absolute transparency and candidate dignity.",
     icon: "users",
   },
   {
     id: "outsourcing",
-    title: "Outsourcing",
+    title: "Workforce Outsourcing",
     slug: "outsourcing",
     href: "/services/outsourcing",
-    outcome: "Scale your workforce with confidence.",
+    outcome: "Focus on your core business while we take total workforce accountability.",
     description:
-      "We support the people, processes, and administration that keep operations moving.",
+      "Comprehensive employer-of-record solutions: recruitment, onboarding, payroll processing, statutory compliance (PAYE, NSSF, AHL, WIBA), and on-site staff supervision.",
     icon: "building",
   },
   {
-    id: "talent-advisory",
-    title: "Talent Advisory",
-    slug: "talent-advisory",
-    href: "/services/talent-advisory",
-    outcome: "Make better workforce decisions.",
-    description:
-      "We help organizations understand talent needs, plan for growth, and build stronger teams.",
-    icon: "compass",
-  },
-  {
-    id: "training",
-    title: "Training & Preparation",
+    id: "readiness-training",
+    title: "Worker Readiness & Preparation",
     slug: "training",
     href: "/training",
-    outcome: "Turn potential into readiness.",
+    outcome: "Transform raw talent into work-ready, confident employees.",
     description:
-      "We help candidates build the confidence, skills, and workplace knowledge needed to take their next step.",
+      "Specialized training modules covering cultural orientation, workplace ethics, financial literacy, emotional resilience for migration, and worker rights.",
     icon: "graduation-cap",
+  },
+  {
+    id: "talent-advisory",
+    title: "HR Consulting & Compliance",
+    slug: "talent-advisory",
+    href: "/services/talent-advisory",
+    outcome: "Mitigate hiring risks and ensure total regulatory alignment.",
+    description:
+      "HR compliance audits, labor law alignment, contract structuring, performance management systems, and workforce planning advisory.",
+    icon: "compass",
   },
 ];
 
