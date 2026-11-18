@@ -1,5 +1,6 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
+import { createClient as createSupabaseClient } from "@/utils/supabase/middleware";
 
 const previewCookieName = "maintenance-preview";
 const previewQueryName = "maintenance_preview";
@@ -39,12 +40,12 @@ function getPreviewExpiry(token: string, secret: string): number | null {
   return expiresAt;
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   if (
     process.env.MAINTENANCE_MODE !== "true" ||
     request.nextUrl.pathname === "/maintenance"
   ) {
-    return NextResponse.next();
+    return continueWithSession(request);
   }
 
   const secret = process.env.MAINTENANCE_BYPASS_SECRET;
@@ -76,13 +77,28 @@ export function proxy(request: NextRequest) {
 
   const previewCookie = request.cookies.get(previewCookieName)?.value;
   if (secret && previewCookie && getPreviewExpiry(previewCookie, secret) !== null) {
-    return NextResponse.next();
+    return continueWithSession(request);
   }
 
   const maintenanceUrl = request.nextUrl.clone();
   maintenanceUrl.pathname = "/maintenance";
 
   return NextResponse.rewrite(maintenanceUrl);
+}
+
+async function continueWithSession(request: NextRequest) {
+  if (
+    !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+  ) {
+    return NextResponse.next();
+  }
+
+  const { supabase, supabaseResponse } = createSupabaseClient(request);
+  if (request.cookies.getAll().some((cookie) => cookie.name.includes("auth-token"))) {
+    await supabase.auth.getUser();
+  }
+  return supabaseResponse;
 }
 
 export const config = {

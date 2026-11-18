@@ -7,6 +7,8 @@ This guide details how your Supabase backend is configured and used to power Utu
 ## 1. Database Schema Overview
 
 The complete SQL schema is located in [`supabase/migrations/001_initial_schema.sql`](./supabase/migrations/001_initial_schema.sql).
+The admin dashboard security and submission RPCs are in
+[`supabase/migrations/002_admin_dashboard.sql`](./supabase/migrations/002_admin_dashboard.sql).
 
 ### Key Tables & Entities:
 | Table Name | Description | Purpose |
@@ -34,6 +36,22 @@ The complete SQL schema is located in [`supabase/migrations/001_initial_schema.s
 3. In the left sidebar, click **SQL Editor** -> **New query**.
 4. Open the file `supabase/migrations/001_initial_schema.sql` in your project folder, copy its contents, paste them into the SQL editor, and click **Run**.
 5. All 14 tables, lookup sectors, seed jobs, functions, triggers, and Row Level Security (RLS) policies will be deployed instantly.
+6. Run `002_admin_dashboard.sql` after the initial schema to enable admin-only reads for personal submissions and admin content management.
+
+### Step C: Enable Dashboard Access
+1. Create an account in Supabase Authentication for each staff member who needs access. Public sign-up is not enabled by the website.
+2. Set `app_metadata.role` to `admin` for each approved user using trusted Supabase admin tooling. For a database-admin workflow, the equivalent is:
+
+   ```sql
+   UPDATE auth.users
+   SET raw_app_meta_data = COALESCE(raw_app_meta_data, '{}'::jsonb) || '{"role":"admin"}'::jsonb
+   WHERE email = 'admin@example.com';
+   ```
+
+3. Sign out and back in so Supabase issues a JWT containing the updated app metadata. The dashboard is available at `/login`.
+4. Do not set this role in `user_metadata`; users can edit their own user metadata.
+
+Admins can create draft or published jobs and articles at `/dashboard/jobs` and `/dashboard/insights`. Published database content appears on the public jobs and insights pages. The dashboard also lists candidate registrations, job applications, inquiries, contact messages, and job-alert subscriptions submitted through the website.
 
 ### Step B: Create the Storage Bucket for CVs
 1. In the Supabase Dashboard left sidebar, click **Storage**.
@@ -98,7 +116,6 @@ ORDER BY created_at DESC;
 
 ## 5. Security & Ethical Compliance
 
-- **Row Level Security (RLS)** is enabled across all tables.
-- Public users can submit CVs, applications, and inquiries (`INSERT` allowed).
-- Sensitive internal recruitment notes (`internal_notes`, `rating`) are restricted to administrative dashboards.
+- **Row Level Security (RLS)** is enabled across all tables. Public users can submit CVs, applications, and inquiries through narrowly scoped insert policies and RPCs.
+- Candidate profiles and application records are readable only by signed-in users with the trusted `app_metadata.role = 'admin'` claim. Never expose a Supabase service-role key in the browser.
 - Compliance aligned with Kenya's **Data Protection Act (2019)** and **National Employment Authority (NEA)** reporting standards.

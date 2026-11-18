@@ -65,56 +65,32 @@ export async function registerCandidateInPool(payload: {
 }): Promise<{ success: boolean; candidateId?: string; error?: string }> {
   try {
     const supabase = createClient();
+    const { error } = await supabase.rpc(
+      "register_candidate_submission",
+      {
+        p_first_name: payload.firstName,
+        p_last_name: payload.lastName,
+        p_email: payload.email,
+        p_phone: payload.phone,
+        p_location: payload.location || null,
+        p_current_title: payload.currentTitle || null,
+        p_years_experience: payload.yearsExperience ?? null,
+        p_skill_level: payload.skillLevel || null,
+        p_preferred_sectors: payload.preferredSectors || [],
+        p_open_to_international: !!payload.openToInternational,
+        p_cv_url: payload.cvUrl || null,
+        p_cv_filename: payload.cvFilename || null,
+        p_subscribe_job_alerts: !!payload.subscribeJobAlerts,
+        p_professional_summary: payload.notes || null,
+        p_consent_privacy: true,
+      },
+    );
 
-    const candidateData: Record<string, unknown> = {
-      first_name: payload.firstName.trim(),
-      last_name: payload.lastName.trim(),
-      email: payload.email.trim().toLowerCase(),
-      phone: payload.phone.trim(),
-      location: payload.location?.trim() || null,
-      current_title: payload.currentTitle?.trim() || null,
-      years_experience: payload.yearsExperience ? Number(payload.yearsExperience) : null,
-      skill_level: payload.skillLevel || null,
-      preferred_sectors: payload.preferredSectors || [],
-      open_to_international: !!payload.openToInternational,
-      cv_url: payload.cvUrl || null,
-      cv_filename: payload.cvFilename || null,
-      cv_uploaded_at: payload.cvUrl ? new Date().toISOString() : null,
-      consent_privacy: true,
-      consent_job_alerts: !!payload.subscribeJobAlerts,
-      professional_summary: payload.notes?.trim() || null,
-      status: "registered",
-    };
-
-    // Upsert candidate by email
-    const { data: candidate, error: candidateError } = await supabase
-      .from("candidates")
-      .upsert(candidateData, { onConflict: "email" })
-      .select("id")
-      .single();
-
-    if (candidateError) {
-      console.warn("Database candidate registration note:", candidateError.message);
-      return { success: false, error: candidateError.message };
+    if (error) {
+      return { success: false, error: error.message };
     }
 
-    const candidateId = (candidate as { id?: string } | null)?.id;
-
-    // If opted into job alerts, save subscription
-    if (payload.subscribeJobAlerts && payload.email) {
-      await supabase.from("job_alert_subscriptions").upsert(
-        {
-          candidate_id: candidateId || null,
-          email: payload.email.trim().toLowerCase(),
-          name: `${payload.firstName} ${payload.lastName}`.trim(),
-          preferred_sectors: payload.preferredSectors || [],
-          is_active: true,
-        },
-        { onConflict: "email" }
-      );
-    }
-
-    return { success: true, candidateId };
+    return { success: true };
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Failed to submit profile";
     console.error("Candidate registration error:", err);
@@ -138,69 +114,18 @@ export async function submitJobApplication(payload: {
 }): Promise<{ success: boolean; error?: string }> {
   try {
     const supabase = createClient();
-    const parts = payload.name.trim().split(" ");
-    const firstName = parts[0] || "";
-    const lastName = parts.slice(1).join(" ") || "Candidate";
-
-    // 1. Ensure candidate is in the talent pool
-    const { data: candidate } = await supabase
-      .from("candidates")
-      .upsert(
-        {
-          first_name: firstName,
-          last_name: lastName,
-          email: payload.email.trim().toLowerCase(),
-          phone: payload.phone.trim(),
-          cv_url: payload.cvUrl || null,
-          cv_filename: payload.cvFilename || null,
-          consent_privacy: true,
-          consent_job_alerts: true,
-        },
-        { onConflict: "email" }
-      )
-      .select("id")
-      .single();
-
-    const candidateId = (candidate as { id?: string } | null)?.id;
-
-    // 2. Fetch job ID by slug if not provided
-    let jobId = payload.jobId;
-    if (!jobId) {
-      const { data: jobRecord } = await supabase
-        .from("jobs")
-        .select("id")
-        .eq("slug", payload.jobSlug)
-        .single();
-      jobId = (jobRecord as { id?: string } | null)?.id;
-    }
-
-    // 3. Insert application if job found, otherwise record inquiry
-    if (jobId && candidateId) {
-      const { error: appError } = await supabase.from("job_applications").insert({
-        job_id: jobId,
-        candidate_id: candidateId,
-        cover_letter: payload.message || null,
-        cv_url: payload.cvUrl || null,
-        status: "submitted",
-      });
-
-      if (appError) {
-        console.warn("Application insert note:", appError.message);
-      }
-    }
-
-    // 4. Also store in inquiries as an audit record
-    await supabase.from("inquiries").insert({
-      type: "candidate",
-      name: payload.name.trim(),
-      email: payload.email.trim().toLowerCase(),
-      phone: payload.phone.trim(),
-      subject: `Application for ${payload.jobTitle}`,
-      message: payload.message || `Interest expressed for ${payload.jobTitle}. CV: ${payload.cvFilename || "None"}`,
-      interest: "jobs",
-      consent_privacy: true,
+    const { error } = await supabase.rpc("submit_job_application", {
+      p_job_slug: payload.jobSlug,
+      p_name: payload.name,
+      p_email: payload.email,
+      p_phone: payload.phone,
+      p_message: payload.message || null,
+      p_cv_url: payload.cvUrl || null,
+      p_cv_filename: payload.cvFilename || null,
+      p_consent_privacy: true,
     });
 
+    if (error) return { success: false, error: error.message };
     return { success: true };
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Failed to submit application";

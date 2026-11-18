@@ -3,6 +3,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { LeadershipSection } from "@/components/sections/LeadershipSection";
 import { companyValues } from "@/content/impact";
 import { brandPrinciples, globalFootprint, siteConfig } from "@/content/site";
+import OperationsMap from "@/components/sections/OperationsMap";
 import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
@@ -95,7 +96,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {globalFootprint.map((hub) => (
               <div
                 key={hub.region}
@@ -115,7 +116,8 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
+          <OperationsMap hubs={globalFootprint} />
 
           <div className="mt-12 rounded-xl border border-white/20 bg-white/5 p-6 text-center text-sm text-white/90">
             <strong>Headquarters:</strong> {siteConfig.contact.headquarters} · Helpline: {siteConfig.contact.phone}

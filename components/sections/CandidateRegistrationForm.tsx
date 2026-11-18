@@ -106,8 +106,9 @@ export function CandidateRegistrationForm() {
         notes,
       });
 
-      if (!regRes.success && regRes.error) {
-        console.warn("Notice during registration:", regRes.error);
+      if (!regRes.success) {
+        setSubmitError(regRes.error || "We could not save your profile. Please try again.");
+        return;
       }
 
       setSubmitSuccess(true);

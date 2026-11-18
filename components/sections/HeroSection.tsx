@@ -29,7 +29,7 @@ export function HeroSection({
   trustStatement = brandPrinciples.trustStatement,
 }: HeroSectionProps) {
   return (
-    <section className="relative isolate overflow-hidden bg-deep-teal">
+    <section className="relative isolate overflow-hidden bg-[url('/images/hrro.jpg')] bg-right md:bg-center bg-cover md:bg-cover bg-no-repeat">
       <div
         className="pointer-events-none absolute -right-32 -top-40 -z-10 size-[34rem] rounded-full border border-deep-teal/10"
         aria-hidden="true"
@@ -38,18 +38,18 @@ export function HeroSection({
         className="pointer-events-none absolute -right-16 -top-24 -z-10 size-[26rem] rounded-full border border-deep-teal/10"
         aria-hidden="true"
       />
-      <div className="container-site grid items-center gap-12 py-16 md:py-20 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-24">
+      <div className="container-site grid items-center gap-12 pb-16 pt-28 md:pb-20 md:pt-32 lg:min-h-[640px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-24 lg:pt-36">
         <div className="max-w-2xl">
           {/* <p className="eyebrow text-warm-ivory">
             {eyebrow}
           </p> */}
           <TextReveal
             as="h1"
-            className="font-display text-warm-ivory mt-6 text-balance text-[2.75rem] font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-[4.25rem]"
+            className="font-display text-deep-teal mt-6 text-balance text-[2.75rem] font-semibold leading-[1.05] tracking-tight md:text-6xl lg:text-[4.25rem]"
             segments={[
               { text: title },
               ...(titleLine2
-                ? [{ text: ` ${titleLine2}`, className: "text-warm-ivory" }]
+                ? [{ text: ` ${titleLine2}`, className: "text-deep-teal" }]
                 : []),
             ]}
             trigger="load"
@@ -57,7 +57,7 @@ export function HeroSection({
           />
           <ScrollReveal
             as="p"
-            className="mt-6 max-w-xl text-lg leading-relaxed text-warm-ivory md:text-xl"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-black md:text-xl"
             trigger="load"
             delay={0.3}
           >
@@ -85,8 +85,8 @@ export function HeroSection({
         </div>
 
         <div className="relative mx-auto w-full max-w-[34rem] lg:mr-0">
-          <div className="absolute -inset-4 -z-10 rotate-3 rounded-[2rem] bg-mist" aria-hidden="true" />
-          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-mist shadow-lg md:aspect-[5/4]">
+          <div className="absolute -inset-4 -z-10 rotate-3 rounded-[2rem] " aria-hidden="true" />
+          <div className="relative aspect-[4/5] overflow-hidden rounded-2xl   md:aspect-[5/4]">
             <Image
               src='/images/hero.png'
               alt={imageAlt}

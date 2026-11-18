@@ -5,9 +5,9 @@ import { PageHero } from "@/components/sections/FinalCTA";
 import { FilterBar, filterJobs, type JobFilters } from "@/components/sections/FilterBar";
 import { JobCard } from "@/components/sections/JobCard";
 import { LinkButton } from "@/components/ui/LinkButton";
-import { jobs, jobLocations, jobSectors } from "@/content/jobs";
+import type { Job } from "@/lib/types";
 
-export function JobsListing() {
+export function JobsListing({ jobs }: { jobs: Job[] }) {
   const [filters, setFilters] = useState<JobFilters>({
     keyword: "",
     location: "",
@@ -18,8 +18,10 @@ export function JobsListing() {
 
   const filteredJobs = useMemo(
     () => filterJobs(jobs, filters),
-    [filters],
+    [jobs, filters],
   );
+  const jobLocations = [...new Set(jobs.map((job) => job.location))].sort();
+  const jobSectors = [...new Set(jobs.map((job) => job.sector))].sort();
 
   return (
     <>

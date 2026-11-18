@@ -80,7 +80,7 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
       }
 
       // Save to Supabase backend
-      await submitJobApplication({
+      const result = await submitJobApplication({
         jobSlug: job.slug,
         jobTitle: job.title,
         name,
@@ -91,21 +91,16 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
         cvFilename,
       });
 
+      if (!result.success) {
+        throw new Error(result.error || "Application could not be saved.");
+      }
+
       setSubmitted(true);
     } catch (err) {
       console.error("Application error:", err);
-      // Fallback: still open email draft so applicant is never blocked
-      const body = [
-        `Position: ${job.title}`,
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone}`,
-        `CV: ${selectedFile?.name || "Attached separately"}`,
-        `Why interested: ${message}`,
-      ].join("\n");
-      const subject = `Job Application: ${job.title} - ${name}`;
-      window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setSubmitted(true);
+      setErrors({
+        form: `Your application could not be saved. Please try again or email ${siteConfig.contact.email}.`,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -167,6 +162,11 @@ export function ApplyModal({ job, onClose }: { job: Job; onClose: () => void }) 
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+            {errors.form && (
+              <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-800" role="alert">
+                {errors.form}
+              </p>
+            )}
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
                 <label htmlFor="apply-name" className="block text-xs font-semibold text-ink uppercase tracking-wider">

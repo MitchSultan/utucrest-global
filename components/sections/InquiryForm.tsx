@@ -173,7 +173,7 @@ export function InquiryForm({ variant, className }: InquiryFormProps) {
     setIsSubmitting(true);
 
     try {
-      await submitInquiryToDb({
+      const result = await submitInquiryToDb({
         type: variant,
         name: formData.get("name")?.toString().trim() || "",
         email: formData.get("email")?.toString().trim() || "",
@@ -188,16 +188,16 @@ export function InquiryForm({ variant, className }: InquiryFormProps) {
         interest: formData.get("interest")?.toString().trim() || undefined,
       });
 
+      if (!result.success) {
+        throw new Error(result.error || "Inquiry could not be saved.");
+      }
+
       setSubmitted(true);
     } catch (err) {
       console.error("Inquiry submit error:", err);
-      // Fallback: email trigger
-      const body = fields
-        .map((field) => `${field.label}: ${formData.get(field.name)?.toString().trim() ?? ""}`)
-        .join("\n");
-      const subject = `${siteConfig.shortName} ${variant} inquiry`;
-      window.location.href = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      setSubmitted(true);
+      setErrors({
+        submit: `We could not save your inquiry. Please try again or email ${siteConfig.contact.email}.`,
+      });
     } finally {
       setIsSubmitting(false);
     }

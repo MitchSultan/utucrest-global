@@ -5,7 +5,7 @@ export const siteConfig = {
   tagline: "Beyond Recruitment · Elevating Talent with Dignity",
   slogan: "Where opportunity meets dignity",
   description:
-    "UtuCrest Global Workforce is a workforce solutions company connecting businesses with prepared, reliable, and ethically sourced talent—upholding dignity, excellence, and integrity in every engagement across Kenya, Europe, the Middle East, and Asia.",
+    "UtuCrest Global is a workforce solutions company committed to providing businesses with reliable, prepared, and ethically sourced talent. We partner with organizations to manage their workforce.",
   url: "https://www.utucrestglobal.co.ke",
   contact: {
     headquarters: "Elysee Plaza, First Floor, Kilimani, Nairobi, Kenya",

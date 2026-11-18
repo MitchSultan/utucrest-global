@@ -82,7 +82,9 @@ export function CommitmentSection() {
         >
           <ResponsiveCarousel
             label="Our commitments"
-            className="md:grid-cols-2 lg:grid-cols-3"
+            className="md:-ml-4"
+            loop
+            autoplay
           >
             {commitments.map((commitment) => (
               <div
@@ -111,7 +113,7 @@ export function CommitmentSection() {
         </ScrollReveal>
 
         {/* Commitment Highlight Callout Banner */}
-        <div className="mt-12 rounded-2xl bg-deep-teal p-8 text-white md:p-10 shadow-md">
+        <div className="mt-20 rounded-2xl bg-deep-teal p-8 text-white md:p-10 shadow-md">
           <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-golden-sand/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-golden-sand">

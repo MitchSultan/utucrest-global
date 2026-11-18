@@ -1,20 +1,15 @@
 import { notFound } from "next/navigation";
 import { JobDetailClient } from "@/components/sections/JobDetailClient";
-import { getJobBySlug, getRelatedJobs } from "@/content/jobs";
 import { createMetadata } from "@/lib/metadata";
+import { getPublicJobs } from "@/lib/public-content";
 
 interface JobDetailPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export async function generateStaticParams() {
-  const { jobs } = await import("@/content/jobs");
-  return jobs.map((job) => ({ slug: job.slug }));
-}
-
 export async function generateMetadata({ params }: JobDetailPageProps) {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const job = (await getPublicJobs()).find((item) => item.slug === slug);
   if (!job) return {};
 
   return createMetadata({
@@ -26,13 +21,14 @@ export async function generateMetadata({ params }: JobDetailPageProps) {
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
   const { slug } = await params;
-  const job = getJobBySlug(slug);
+  const jobs = await getPublicJobs();
+  const job = jobs.find((item) => item.slug === slug);
 
-  if (!job) {
-    notFound();
-  }
+  if (!job) notFound();
 
-  const relatedJobs = getRelatedJobs(slug);
+  const relatedJobs = jobs
+    .filter((item) => item.slug !== slug && item.sector === job.sector)
+    .slice(0, 3);
 
   return <JobDetailClient job={job} relatedJobs={relatedJobs} />;
 }

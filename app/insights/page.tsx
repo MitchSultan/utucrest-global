@@ -1,7 +1,7 @@
 import { InsightCard } from "@/components/sections/InsightCard";
 import { PageHero } from "@/components/sections/FinalCTA";
-import { insights } from "@/content/insights";
 import { createMetadata } from "@/lib/metadata";
+import { getPublicInsights } from "@/lib/public-content";
 
 export const metadata = createMetadata({
   title: "Insights",
@@ -10,7 +10,9 @@ export const metadata = createMetadata({
   path: "/insights",
 });
 
-export default function InsightsPage() {
+export default async function InsightsPage() {
+  const insights = await getPublicInsights();
+
   return (
     <>
       <PageHero

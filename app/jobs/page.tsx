@@ -1,5 +1,6 @@
 import { JobsListing } from "@/components/sections/JobsListing";
 import { createMetadata } from "@/lib/metadata";
+import { getPublicJobs } from "@/lib/public-content";
 
 export const metadata = createMetadata({
   title: "Job Opportunities",
@@ -8,6 +9,7 @@ export const metadata = createMetadata({
   path: "/jobs",
 });
 
-export default function JobsPage() {
-  return <JobsListing />;
+export default async function JobsPage() {
+  const jobs = await getPublicJobs();
+  return <JobsListing jobs={jobs} />;
 }

@@ -15,7 +15,7 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/60 bg-white/95 backdrop-blur-md">
+      <header className="fixed inset-x-0 top-0 z-40 border-b border-white/35 bg-white/45 shadow-sm backdrop-blur-xl supports-[backdrop-filter]:bg-white/30">
         <div className="container-site flex h-[var(--header-height)] items-center justify-between gap-4">
           <Logo />
 

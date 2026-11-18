@@ -51,14 +51,14 @@ export function PageHero({
           as="h1"
           text={title}
           trigger="load"
-          className="font-display mt-3 text-balance text-4xl font-semibold tracking-tight text-ink md:text-5xl"
+          className="font-display mt-3 md:max-w-8/12 text-balance text-4xl font-semibold tracking-tight text-ink md:text-5xl"
         />
         {description && (
           <ScrollReveal
             as="p"
             trigger="load"
             delay={0.2}
-            className="mt-4 text-lg max-w-96leading-relaxed text-charcoal/85"
+            className="mt-4 text-lg md:max-w-6/12 leading-relaxed text-charcoal/85"
           >
             {description}
           </ScrollReveal>

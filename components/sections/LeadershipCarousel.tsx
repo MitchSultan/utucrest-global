@@ -74,7 +74,7 @@ export function LeadershipCarousel({
                       src={member.image}
                       alt={`Portrait of ${member.name}`}
                       fill
-                      className="leadership-portrait object-cover object-top transition duration-500 group-hover:scale-105"
+                      className="leadership-portrait object-cover object-top transition filter-grayscale duration-500 group-hover:scale-105"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       onError={() => handleImageError(index)}
                     />
@@ -116,11 +116,11 @@ export function LeadershipCarousel({
                 <button
                   type="button"
                   onClick={() => handleOpenModal(member, index)}
-                  className="group/btn inline-flex w-full items-center justify-center gap-2 rounded-lg border border-deep-teal/30 bg-warm-ivory/60 px-4 py-2.5 text-sm font-semibold text-deep-teal shadow-2xs transition hover:bg-deep-teal hover:text-white focus:outline-hidden focus:ring-2 focus:ring-deep-teal"
+                  className=" inline-flex w-full items-start justify-start gap-2 rounded-lg  px-4 py-2.5 text-sm font-semibold text-deep-teal    hover:text-deep-teal/80 focus:outline-hidden focus:ring-2 focus:ring-deep-teal"
                 >
                   <span>Learn More</span>
                   <ArrowRight
-                    className="size-4 transition-transform group-hover/btn:translate-x-1"
+                    className="size-4 transition-transform group-hover/btn:translate-x-4"
                     aria-hidden="true"
                   />
                 </button>

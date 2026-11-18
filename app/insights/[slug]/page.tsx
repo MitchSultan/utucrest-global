@@ -2,21 +2,17 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Clock } from "lucide-react";
 import { PageHero } from "@/components/sections/FinalCTA";
-import { getInsightBySlug, insights } from "@/content/insights";
 import { createMetadata } from "@/lib/metadata";
+import { getPublicInsights } from "@/lib/public-content";
 import { formatDate } from "@/lib/utils";
 
 interface InsightPageProps {
   params: Promise<{ slug: string }>;
 }
 
-export function generateStaticParams() {
-  return insights.map((insight) => ({ slug: insight.slug }));
-}
-
 export async function generateMetadata({ params }: InsightPageProps) {
   const { slug } = await params;
-  const insight = getInsightBySlug(slug);
+  const insight = (await getPublicInsights()).find((item) => item.slug === slug);
   if (!insight) return {};
 
   return createMetadata({
@@ -28,7 +24,7 @@ export async function generateMetadata({ params }: InsightPageProps) {
 
 export default async function InsightPage({ params }: InsightPageProps) {
   const { slug } = await params;
-  const insight = getInsightBySlug(slug);
+  const insight = (await getPublicInsights()).find((item) => item.slug === slug);
 
   if (!insight) notFound();
 
