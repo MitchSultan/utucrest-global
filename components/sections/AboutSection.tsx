@@ -44,19 +44,17 @@ export function AboutSection() {
               as="p"
               className="mt-6 text-base leading-relaxed text-charcoal/85 sm:text-lg"
             >
-              UtuCrest Global Workforce is a premier workforce solutions partner
-              dedicated to connecting organizations with prepared, reliable, and
-              ethically sourced talent.
+             We exist to bridge the gap between opportunity and talent.
+
+
             </ScrollReveal>
 
             <ScrollReveal
               as="p"
               className="mt-4 text-sm leading-relaxed text-charcoal/80 sm:text-base"
             >
-              Rooted in the African value of{" "}
-              <strong className="font-semibold text-ink">Utu</strong> (human
-              dignity), we bridge local and international workforce needs across
-              Kenya, Europe, the Middle East, and Asia.
+              Our purpose is to enable businesses to thrive while empowering individuals to grow, earn, and work with dignity locally and globally.
+
             </ScrollReveal>
             {/* <ScrollReveal
               as="p"

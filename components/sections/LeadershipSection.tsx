@@ -82,7 +82,7 @@ export function LeadershipSection({
                       src={leader.image}
                       alt={`Portrait of ${leader.name}`}
                       fill
-                      className="leadership-portrait object-cover object-top transition duration-500 group-hover:scale-105"
+                      className="leadership-portrait object-cover filter:grayscale(100%) object-top transition duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       onError={() =>
                         setImageErrors((prev) => ({ ...prev, [index]: true }))
@@ -117,7 +117,7 @@ export function LeadershipSection({
                   <h3 className="font-display mt-2 text-xl font-semibold text-ink group-hover:text-deep-teal transition-colors">
                     {leader.name}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-charcoal/80 border-t border-border/70 pt-3">
+                  <p className="mt-3 text-sm line-clamp-3 leading-relaxed text-charcoal/80  border-t border-border/70 pt-3">
                     {leader.bio}
                   </p>
                 </div>

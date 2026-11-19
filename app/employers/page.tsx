@@ -28,8 +28,7 @@ export default function EmployersPage() {
       <PageHero
         eyebrow="For Employers · Workforce Outsourcing"
         title="Focus on your business. We manage the people."
-        description="UtuCrest Global Workforce acts as your trusted employer-of-record and workforce management partner. We handle talent sourcing, statutory compliance, payroll, onboarding, and day-to-day oversight so you can operate with speed and peace of mind."
-      >
+        description="UtuCrest Global Workforce is a workforce solutions company committed to providing businesses with reliable, prepared, and ethically sourced talent. We partner with organizations to manage their workforce needs end-to-end, enabling them to focus on their core business operations while we handle recruitment, administration, compliance, and workforce management.">
         <div className="flex flex-col gap-3 sm:flex-row">
           <LinkButton href="#inquiry-form">Submit a workforce brief</LinkButton>
           <LinkButton href="#commercial-model" variant="secondary">

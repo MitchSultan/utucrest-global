@@ -28,7 +28,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <article className="group flex h-full flex-col rounded-xl border border-border bg-white p-6 transition-shadow duration-200 hover:shadow-md">
-      <div className="inline-flex rounded-lg bg-mist p-2.5 text-deep-teal">
+      <div className="inline-flex rounded-lg  p-2.5 text-deep-teal">
         <Icon className="size-5" aria-hidden="true" />
       </div>
       <h3 className="mt-4 text-lg font-semibold text-ink">{service.title}</h3>

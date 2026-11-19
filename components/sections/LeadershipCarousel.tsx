@@ -105,7 +105,7 @@ export function LeadershipCarousel({
                     {member.name}
                   </h3>
                   <div className="mt-4 border-t border-border/70 pt-4">
-                    <p className="text-sm leading-relaxed text-charcoal/85">
+                    <p className="text-sm line-clamp-3 leading-relaxed text-charcoal/85">
                       {member.bio}
                     </p>
                   </div>

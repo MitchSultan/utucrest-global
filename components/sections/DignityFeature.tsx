@@ -10,7 +10,7 @@ export function DignityFeature() {
       <div className="container-site grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
           <Image
-            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80"
+            src="/images/dignity.png"
             alt="Colleagues collaborating in a modern workplace"
             fill
             className="object-cover"

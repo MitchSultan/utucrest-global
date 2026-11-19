@@ -11,7 +11,7 @@ export interface InsightCardProps {
 export function InsightCard({ insight }: InsightCardProps) {
   return (
     <article className="group flex h-full flex-col rounded-xl border border-border bg-white p-6 transition-shadow hover:shadow-md">
-      <Badge variant="teal">{insight.category}</Badge>
+      <Badge >{insight.category}</Badge>
       <h3 className="mt-4 text-lg font-semibold text-ink group-hover:text-deep-teal">
         <Link href={`/insights/${insight.slug}`}>{insight.title}</Link>
       </h3>

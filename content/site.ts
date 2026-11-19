@@ -51,13 +51,29 @@ export interface LeadershipMember {
 
 export const leadershipTeam: LeadershipMember[] = [
   {
-    name: "Josephine Macharia",
-    role: "Director, Operations",
-    bio: "Josephine Muthoni Macharia is a Human Resource leader with over 25 years of hands-on experience managing large and complex workforces across manufacturing and banking.",
-    fullBio:
-      "She has led HR operations for workforces of over 3,000 employees and understands what it takes to recruit, deploy, manage, and sustain staff at scale. Her experience spans highly operational environments as well as regulated sectors, giving her a practical understanding of compliance, efficiency, and workforce stability. At UtuCrest, she focuses on delivering end-to-end workforce outsourcing solutions, covering recruitment, onboarding, payroll administration, compliance, performance management, and employee relations. She works closely with clients to ensure their workforce is well managed, compliant, and aligned to business needs.",
+  name: "Josephine Muthoni",
+    role: "Director & Co-Founder",
+      bio: "Josephine Muthoni Macharia is a Human Resource leader with over 25 years of hands-on experience managing large and complex workforces across manufacturing and banking",
+        fullBio:
+  "Josephine Muthoni Macharia is a Human Resource leader with over 25 years of hands-on experience managing large and complex workforces across manufacturing and banking. She has led HR operations for workforces of over 3,000 employees and understands what it takes to recruit, deploy, manage, and sustain staff at scale. Her experience spans highly operational environments as well as regulated sectors, giving her a practical understanding of compliance, efficiency, and workforce stability. At UtuCrest, she focuses on delivering end-to-end workforce outsourcing solutions, covering recruitment, onboarding, payroll administration, compliance, performance management, and employee relations. She works closely with clients to ensure their workforce is well managed, compliant, and aligned to business needs.Josephine brings a practical, results-focused approach, ensuring that organizations can focus on their core business while UtuCrest takes full responsibility for the workforce.",
     image:
-      "/images/macharia.jpg",
+  "/images/joyce.jpg",
+    expertise: [
+      "Strategic Communications & PR",
+      "Ethical Advocacy & Public Affairs",
+      "Brand Positioning & Governance",
+      "Stakeholder Engagement",
+    ],
+      quote: "Communication built on truth, dignity, and empathy has the power to transform industries and elevate lives.",
+  },
+  {
+    name: "Joyce Gituro",
+    role: "Director, Communications and strategy",
+    bio: "Joyce Gituro is an accomplished communication and media professional currently serving as the Director, Communication at UTU CREST GLOBAL",
+    fullBio:
+      "Joyce Gituro is an accomplished communication and media professional currently serving as the Director, Communication at UTU CREST GLOBAL. She brings with her extensive experience in strategic communication, public relations, media relations, brand management, and stakeholder engagement gained through years of working in the media and corporate communication space. Joyce has successfully led and supported numerous high-impact campaigns, corporate branding initiatives, media productions, and public engagement programs across different sectors. Her strong background in storytelling, audience engagement, and reputation management continues to position her as a dynamic leader passionate about impactful communication, brand growth, and community empowerment.",
+    image:
+      "/images/joycegituro.jpg",
     expertise: [
       "Workforce Operations",
       "Labor Compliance & NEA Regulations",
@@ -69,35 +85,20 @@ export const leadershipTeam: LeadershipMember[] = [
   {
     name: "Judy Mwangi",
     role: "Director, Business Development",
-    bio: "Extensive business development and enterprise sales leadership in the insurance sector; proven entrepreneur in consumer goods and retail products.",
+    bio: "With over 20 years of experience in administration, human resources, operations management, direct sales, and business development, I am a seasoned business leader and Director at our HR startup company",
     fullBio:
-      "Judy Mwangi is a dynamic business development strategist and entrepreneur with an exceptional track record in enterprise client acquisition, strategic partnerships, and commercial growth. Having driven high-value corporate portfolios across the insurance and financial services sectors, Judy oversees UtuCrest's client engagement models and bilateral staffing agreements. She works directly with domestic and international enterprise partners to structure customized workforce solutions that solve operational bottlenecks while fiercely safeguarding fair recruitment principles.",
-    image:
-      "/images/judymwangi.jpg",
-    expertise: [
-      "Enterprise Solutions & Outsourcing",
-      "Bilateral Staffing Partnerships",
-      "Strategic Market Expansion",
-      "Client Relationship Governance",
-    ],
+      "With over 20 years of experience in administration, human resources, operations management, direct sales, and business development, I am a seasoned business leader and Director at our HR startup company.I am passionate about people development, business growth, and building strong, high- performing teams.I bring a wealth of experience across diverse industries including human resources, networking, beauty,  insurance, and corporate sales.Throughout my career, I have built a strong reputation for leadership  excellence, strategic thinking, client relationship management, and operational efficiency.My expertise in direct sales and team building has enabled me to successfully lead teams, grow business portfolios, and drive  sustainable results. Currently active in the insurance industry, I continue to champion growth - driven strategies, customer engagement, and talent development while helping organizations strengthen performance and expand their  market reach.My dynamic leadership style, entrepreneurial mindset, and commitment to excellence position me as a valuable force in todays evolving business landscape.",
+image:
+"/images/judymwangi.jpg",
+  expertise: [
+    "Enterprise Solutions & Outsourcing",
+    "Bilateral Staffing Partnerships",
+    "Strategic Market Expansion",
+    "Client Relationship Governance",
+  ],
     quote: "We don't merely fill headcount; we build resilient, dependable talent partnerships that fuel sustainable commercial growth.",
   },
-  {
-    name: "Joyce Gituro",
-    role: "Director, Communication and Brand Strategy",
-    bio: "25+ years in media, executive communication, and broadcast leadership across Kenya's leading media houses, high-level corporate appointments, and strategic advisory.",
-    fullBio:
-      "Joyce Gituro is an iconic media executive, strategic communications consultant, and public advocate with over two decades of leadership at Kenya's premier broadcasting organizations (including Royal Media Services and Standard Media Group). At UtuCrest, Joyce leads corporate brand identity, stakeholder communications, and ethical recruitment advocacy. Her passion for human dignity and worker empowerment ensures that UtuCrest's voice resonates with clarity, trustworthiness, and compassion across both candidate communities and institutional platforms.",
-    image:
-      "/images/joyce.jpg",
-    expertise: [
-      "Strategic Communications & PR",
-      "Ethical Advocacy & Public Affairs",
-      "Brand Positioning & Governance",
-      "Stakeholder Engagement",
-    ],
-    quote: "Communication built on truth, dignity, and empathy has the power to transform industries and elevate lives.",
-  },
+
 ];
 
 export const globalFootprint = [
