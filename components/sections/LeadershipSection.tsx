@@ -63,7 +63,7 @@ export function LeadershipSection({
           className="mb-12"
         />
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
           {members.map((leader, index) => (
             <article
               key={leader.name}

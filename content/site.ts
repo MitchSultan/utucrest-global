@@ -57,7 +57,7 @@ export const leadershipTeam: LeadershipMember[] = [
         fullBio:
   "Josephine Muthoni Macharia is a Human Resource leader with over 25 years of hands-on experience managing large and complex workforces across manufacturing and banking. She has led HR operations for workforces of over 3,000 employees and understands what it takes to recruit, deploy, manage, and sustain staff at scale. Her experience spans highly operational environments as well as regulated sectors, giving her a practical understanding of compliance, efficiency, and workforce stability. At UtuCrest, she focuses on delivering end-to-end workforce outsourcing solutions, covering recruitment, onboarding, payroll administration, compliance, performance management, and employee relations. She works closely with clients to ensure their workforce is well managed, compliant, and aligned to business needs.Josephine brings a practical, results-focused approach, ensuring that organizations can focus on their core business while UtuCrest takes full responsibility for the workforce.",
     image:
-  "/images/joyce.jpg",
+  "/images/jos.jpg",
     expertise: [
       "Strategic Communications & PR",
       "Ethical Advocacy & Public Affairs",
@@ -69,11 +69,11 @@ export const leadershipTeam: LeadershipMember[] = [
   {
     name: "Joyce Gituro",
     role: "Director, Communications and strategy",
-    bio: "Joyce Gituro is an accomplished communication and media professional currently serving as the Director, Communication at UTU CREST GLOBAL",
+    bio: "Joyce Gituro is an accomplished communication and media professional currently serving as the Director, Communication at UTU CREST GLOBAL. She brings with her extensive experience in strategic communication",
     fullBio:
       "Joyce Gituro is an accomplished communication and media professional currently serving as the Director, Communication at UTU CREST GLOBAL. She brings with her extensive experience in strategic communication, public relations, media relations, brand management, and stakeholder engagement gained through years of working in the media and corporate communication space. Joyce has successfully led and supported numerous high-impact campaigns, corporate branding initiatives, media productions, and public engagement programs across different sectors. Her strong background in storytelling, audience engagement, and reputation management continues to position her as a dynamic leader passionate about impactful communication, brand growth, and community empowerment.",
     image:
-      "/images/joycegituro.jpg",
+      "/images/joy1.jpg",
     expertise: [
       "Workforce Operations",
       "Labor Compliance & NEA Regulations",
@@ -89,7 +89,7 @@ export const leadershipTeam: LeadershipMember[] = [
     fullBio:
       "With over 20 years of experience in administration, human resources, operations management, direct sales, and business development, I am a seasoned business leader and Director at our HR startup company.I am passionate about people development, business growth, and building strong, high- performing teams.I bring a wealth of experience across diverse industries including human resources, networking, beauty,  insurance, and corporate sales.Throughout my career, I have built a strong reputation for leadership  excellence, strategic thinking, client relationship management, and operational efficiency.My expertise in direct sales and team building has enabled me to successfully lead teams, grow business portfolios, and drive  sustainable results. Currently active in the insurance industry, I continue to champion growth - driven strategies, customer engagement, and talent development while helping organizations strengthen performance and expand their  market reach.My dynamic leadership style, entrepreneurial mindset, and commitment to excellence position me as a valuable force in todays evolving business landscape.",
 image:
-"/images/judymwangi.jpg",
+"/images/jud.jpg",
   expertise: [
     "Enterprise Solutions & Outsourcing",
     "Bilateral Staffing Partnerships",
@@ -97,6 +97,22 @@ image:
     "Client Relationship Governance",
   ],
     quote: "We don't merely fill headcount; we build resilient, dependable talent partnerships that fuel sustainable commercial growth.",
+  },
+  {
+    name: "Susan Muthoni",
+    role: "Director & CoFounder",
+    bio: "Susan Muthoni is a Project Management Professional with over 20 years of experience leading complex projects and cross-border workforce initiatives across Africa",
+    fullBio:"Susan Muthoni is a Project Management Professional with over 20 years of experience leading complex projects and cross-border workforce initiatives across Africa. She has worked with multinational organizations in the telecommunications sector, with professional experience spanning across various countries. In her previous role as Resource Location Assignment (RLA) Manager for Africa, she led the deployment of talent across multiple markets, enabling professionals to access opportunities beyond their home countries while ensuring alignment with labor laws and organizational policies. At UtuCrest Global, Susan focuses on delivering structured, scalable workforce solutions by managing contracts, optimizing talent mobility, and balancing business needs with meaningful human impact with minimum risk. She is passionate about connecting people to dignified work and building systems that drive consistent, measurable outcomes.",
+
+    image:
+"/images/susan.jpg",
+  expertise: [
+    "Enterprise Solutions & Outsourcing",
+    "Bilateral Staffing Partnerships",
+    "Strategic Market Expansion",
+    "Client Relationship Governance",
+  ],
+    quote: "connecting people to dignified work and building systems that drive consistent, measurable outcomes.",
   },
 
 ];

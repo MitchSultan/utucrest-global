@@ -55,7 +55,7 @@ export function LeadershipCarousel({
 
         <ResponsiveCarousel
           label="Leadership members"
-          className="md:grid-cols-2 lg:grid-cols-3"
+          className="md:grid-cols-2 lg:grid-cols-2"
         >
           {members.map((member, index) => (
             <article
